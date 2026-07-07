@@ -1,0 +1,39 @@
+<!-- @dsCard group="Components" viewport="700x300" name="Buttons" subtitle="Primary indigo CTA, glass, ghost, outline + arrow" -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<link rel="stylesheet" href="../../styles.css" />
+<script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+<script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+<script src="../../_ds_bundle.js"></script>
+<style> body { margin:0; padding:32px; background: var(--surface-page); } </style>
+</head>
+<body>
+<div id="root"></div>
+<script type="text/babel">
+const { Button } = window.Symphony;
+function Demo() {
+  return (
+    <div style={{ display:"flex", flexDirection:"column", gap:24 }}>
+      <div style={{ display:"flex", gap:16, alignItems:"center", flexWrap:"wrap" }}>
+        <Button variant="primary" size="lg" arrow>Read the case study</Button>
+        <Button variant="secondary">Learn more</Button>
+        <Button variant="outline">Careers</Button>
+        <Button variant="ghost">Skip</Button>
+      </div>
+      <div style={{ display:"flex", gap:16, alignItems:"center", flexWrap:"wrap" }}>
+        <Button size="sm">Small</Button>
+        <Button size="md" arrow>Medium</Button>
+        <Button size="lg">Large</Button>
+        <Button shape="pill">Pill</Button>
+        <Button disabled>Disabled</Button>
+      </div>
+    </div>
+  );
+}
+ReactDOM.createRoot(document.getElementById("root")).render(<Demo />);
+</script>
+</body>
+</html>

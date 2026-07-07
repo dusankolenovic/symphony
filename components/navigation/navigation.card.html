@@ -1,0 +1,24 @@
+<!-- @dsCard group="Components" viewport="1280x120" name="Navigation" subtitle="Site header with wordmark + pill nav" -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<link rel="stylesheet" href="../../styles.css" />
+<script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+<script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+<script src="../../_ds_bundle.js"></script>
+<style> body { margin:0; background: var(--surface-page); } </style>
+</head>
+<body>
+<div id="root"></div>
+<script type="text/babel">
+const { NavBar } = window.Symphony;
+function Demo() {
+  const [active, setActive] = React.useState("Who we are");
+  return <NavBar active={active} onSelect={setActive} />;
+}
+ReactDOM.createRoot(document.getElementById("root")).render(<Demo />);
+</script>
+</body>
+</html>

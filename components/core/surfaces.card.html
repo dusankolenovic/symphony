@@ -1,0 +1,41 @@
+<!-- @dsCard group="Components" viewport="700x320" name="Badges, Tags & Cards" subtitle="Pills, category chips, glass & solid surfaces" -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<link rel="stylesheet" href="../../styles.css" />
+<script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+<script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+<script src="../../_ds_bundle.js"></script>
+<style> body { margin:0; padding:32px; background: var(--grad-aurora); background-attachment: fixed; } </style>
+</head>
+<body>
+<div id="root"></div>
+<script type="text/babel">
+const { Badge, Tag, Card } = window.Symphony;
+function Demo() {
+  return (
+    <div style={{ display:"flex", flexDirection:"column", gap:20 }}>
+      <div style={{ display:"flex", gap:12, alignItems:"center", flexWrap:"wrap" }}>
+        <Badge tone="new">New</Badge>
+        <Badge tone="stat">50%</Badge>
+        <Badge tone="stat">$4-6M</Badge>
+        <Badge tone="stat">40-60%</Badge>
+        <Badge tone="outline">Draft</Badge>
+      </div>
+      <div style={{ display:"flex", gap:12, alignItems:"center", flexWrap:"wrap" }}>
+        <Tag variant="solid">Private Equity</Tag>
+        <Tag variant="outline">AI-accelerated product build</Tag>
+      </div>
+      <div style={{ display:"grid", gridTemplateColumns:"1fr 1fr", gap:16 }}>
+        <Card variant="glass"><h3 style={{fontSize:"1.25rem", marginBottom:8}}>Our Vision</h3><p style={{color:"var(--text-body)"}}>Unlocking the full potential of humans + technology.</p></Card>
+        <Card variant="solid"><h3 style={{fontSize:"1.25rem", marginBottom:8}}>Solid card</h3><p style={{color:"var(--text-muted)"}}>Dark bordered surface on canvas.</p></Card>
+      </div>
+    </div>
+  );
+}
+ReactDOM.createRoot(document.getElementById("root")).render(<Demo />);
+</script>
+</body>
+</html>

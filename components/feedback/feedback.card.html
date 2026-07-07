@@ -1,0 +1,29 @@
+<!-- @dsCard group="Components" viewport="1280x140" name="Announcement bar" subtitle="Promo bar with NEW flag, CTA & controls" -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<link rel="stylesheet" href="../../styles.css" />
+<script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+<script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+<script src="../../_ds_bundle.js"></script>
+<style> body { margin:0; background: var(--surface-page); } </style>
+</head>
+<body>
+<div id="root"></div>
+<script type="text/babel">
+const { AnnouncementBar } = window.Symphony;
+function Demo() {
+  return (
+    <AnnouncementBar
+      title="One auditable, AI-ready tax platform"
+      subtitle="Why WTS (EQT-backed tax firm) chose Symphony for both the AI layer and the regulated platform underneath"
+      badge="New"
+      cta="Read the case study" />
+  );
+}
+ReactDOM.createRoot(document.getElementById("root")).render(<Demo />);
+</script>
+</body>
+</html>

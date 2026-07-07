@@ -1,0 +1,18 @@
+<!-- @dsCard group="Brand" viewport="700x260" name="Logo — wordmark" subtitle="Striped-purple 'symphony' on dark & light" -->
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8" /><link rel="stylesheet" href="../styles.css" />
+<style>
+  body{margin:0;font-family:var(--font-body)}
+  .grid{display:grid;grid-template-columns:1fr 1fr;height:260px}
+  .cell{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px}
+  .dark{background:var(--surface-page)} .light{background:#f4f5fb}
+  img{height:44px;width:auto}
+  .l{font-family:var(--font-mono);font-size:10px}
+  .dark .l{color:#6b6f86} .light .l{color:#8a8ea6}
+</style></head>
+<body>
+  <div class="grid">
+    <div class="cell dark"><img src="/assets/symphony-logo.png" alt="Symphony" /><span class="l">on dark canvas</span></div>
+    <div class="cell light"><img src="/assets/symphony-logo.png" alt="Symphony" /><span class="l">on light surface</span></div>
+  </div>
+</body></html>

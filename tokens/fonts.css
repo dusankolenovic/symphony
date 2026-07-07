@@ -1,0 +1,38 @@
+/* ============================================================
+   Symphony — Webfonts (self-hosted)
+   Brand typeface: POPPINS (geometric sans) for everything —
+   display headlines, body, UI, eyebrow labels, metrics.
+   Files in assets/fonts/ (OFL, see OFL.txt).
+   Mono (stat chips / technical labels): Space Mono via Google.
+   ============================================================ */
+
+@font-face {
+  font-family: "Poppins"; font-style: normal; font-weight: 300;
+  font-display: swap; src: url("../assets/fonts/Poppins-Light.ttf") format("truetype");
+}
+@font-face {
+  font-family: "Poppins"; font-style: normal; font-weight: 400;
+  font-display: swap; src: url("../assets/fonts/Poppins-Regular.ttf") format("truetype");
+}
+@font-face {
+  font-family: "Poppins"; font-style: normal; font-weight: 500;
+  font-display: swap; src: url("../assets/fonts/Poppins-Medium.ttf") format("truetype");
+}
+@font-face {
+  font-family: "Poppins"; font-style: normal; font-weight: 600;
+  font-display: swap; src: url("../assets/fonts/Poppins-SemiBold.ttf") format("truetype");
+}
+@font-face {
+  font-family: "Poppins"; font-style: normal; font-weight: 700;
+  font-display: swap; src: url("../assets/fonts/Poppins-Bold.ttf") format("truetype");
+}
+@font-face {
+  font-family: "Poppins"; font-style: normal; font-weight: 800;
+  font-display: swap; src: url("../assets/fonts/Poppins-ExtraBold.ttf") format("truetype");
+}
+@font-face {
+  font-family: "Poppins"; font-style: normal; font-weight: 900;
+  font-display: swap; src: url("../assets/fonts/Poppins-Black.ttf") format("truetype");
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap');

@@ -1,0 +1,76 @@
+/* ============================================================
+   Symphony — Color tokens
+   Dark-first brand. Near-black canvas, glassy surfaces,
+   periwinkle-indigo primary, spectrum "aurora" gradient.
+   ============================================================ */
+
+:root {
+  /* --- Base neutrals (cool, blue-tinted black → white) --- */
+  --sym-black:        #050509;  /* deepest canvas (footprint page) */
+  --sym-ink-900:      #08080f;  /* primary page background */
+  --sym-ink-800:      #0c0c16;  /* raised background */
+  --sym-ink-700:      #14141f;  /* card base */
+  --sym-ink-600:      #1c1c2b;  /* elevated card / input */
+  --sym-ink-500:      #262637;  /* hairline-strong / hover */
+  --sym-ink-400:      #3a3a4d;  /* muted border */
+
+  --sym-white:        #ffffff;
+  --sym-fog-100:      #f4f5fb;  /* near-white text */
+  --sym-fog-200:      #d7d9e6;  /* high-emphasis body */
+  --sym-fog-300:      #a9adc4;  /* secondary text */
+  --sym-fog-400:      #7f8399;  /* muted / placeholder */
+  --sym-fog-500:      #565a70;  /* disabled */
+
+  /* --- Primary: periwinkle / indigo --- */
+  --sym-brand:        #6050a0;  /* exact logo purple (wordmark) */
+  --sym-indigo-300:   #9d92ff;  /* light accent / heading 2nd word */
+  --sym-indigo-400:   #7c6ff6;  /* wordmark accent */
+  --sym-indigo-500:   #6d5df6;  /* PRIMARY */
+  --sym-indigo-600:   #5546e8;  /* primary hover / solid button */
+  --sym-indigo-700:   #4335c9;  /* primary press */
+
+  /* --- Spectrum accents (from the aurora sweep) --- */
+  --sym-blue:         #2b4fe8;  /* electric blue */
+  --sym-magenta:      #e0218a;  /* hot pink */
+  --sym-pink:         #ff2e93;
+  --sym-orange:       #ff7a18;  /* glowing arc */
+  --sym-amber:        #ffb800;
+
+  /* --- Semantic surfaces --- */
+  --surface-page:     var(--sym-ink-900);
+  --surface-raised:   var(--sym-ink-800);
+  --surface-card:     rgba(255,255,255,0.035);
+  --surface-card-solid: var(--sym-ink-700);
+  --surface-input:    rgba(255,255,255,0.03);
+  --surface-glass:    rgba(255,255,255,0.06);
+  --surface-hover:    rgba(255,255,255,0.07);
+
+  /* --- Semantic text --- */
+  --text-strong:      var(--sym-fog-100);
+  --text-body:        var(--sym-fog-200);
+  --text-muted:       var(--sym-fog-300);
+  --text-faint:       var(--sym-fog-400);
+  --text-accent:      var(--sym-indigo-300);
+  --text-on-accent:   #ffffff;
+
+  /* --- Semantic borders --- */
+  --border-subtle:    rgba(255,255,255,0.08);
+  --border-default:   rgba(255,255,255,0.12);
+  --border-strong:    rgba(255,255,255,0.20);
+  --border-accent:    rgba(109,93,246,0.55);
+
+  /* --- Semantic accents --- */
+  --accent-primary:   var(--sym-indigo-500);
+  --accent-primary-hover: var(--sym-indigo-600);
+  --accent-primary-press: var(--sym-indigo-700);
+
+  /* --- Signature gradients --- */
+  --grad-aurora: radial-gradient(120% 130% at 18% 8%, #201a5c 0%, rgba(32,26,92,0) 42%),
+                 radial-gradient(90% 90% at 78% 22%, #2b4fe8 0%, rgba(43,79,232,0) 55%),
+                 radial-gradient(120% 110% at 95% 70%, #e0218a 0%, rgba(224,33,138,0) 55%),
+                 radial-gradient(80% 60% at 60% 118%, #ff7a18 0%, rgba(255,122,24,0) 55%),
+                 #0a0817;
+  --grad-primary:  linear-gradient(180deg, var(--sym-indigo-500) 0%, var(--sym-indigo-600) 100%);
+  --grad-heading:  linear-gradient(90deg, #ffffff 0%, #9d92ff 100%);
+  --grad-glass:    linear-gradient(150deg, rgba(255,255,255,0.10) 0%, rgba(255,255,255,0.02) 100%);
+}

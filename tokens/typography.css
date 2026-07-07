@@ -1,0 +1,58 @@
+/* ============================================================
+   Symphony — Typography tokens
+   Single brand typeface: POPPINS (confirmed).
+   - Headlines: SemiBold 600 / Bold 700, tight -0.02em tracking.
+   - Huge metric callouts ($4T, 40+, ~80%): Bold 700 / ExtraBold 800.
+   - Eyebrow labels (PROVEN IMPACT): SemiBold 600 / Medium 500,
+     ALL CAPS, tiny, wide 0.08–0.12em tracking.
+   - Body / lists: Regular 400, line-height >= 1.6 (Poppins is wide).
+   Mono (Space Mono) only for compact stat chips.
+   ============================================================ */
+
+:root {
+  /* Poppins is the single brand typeface — display + body + labels. */
+  --font-display: "Poppins", "Helvetica Neue", Arial, sans-serif;
+  --font-body:    "Poppins", "Helvetica Neue", Arial, sans-serif;
+  --font-mono:    "Space Mono", ui-monospace, "SF Mono", Menlo, monospace;
+
+  /* Weights */
+  --fw-regular:   400;
+  --fw-medium:    500;
+  --fw-semibold:  600;
+  --fw-bold:      700;
+  --fw-extrabold: 800;
+  --fw-black:     900;
+
+  /* Metric callouts (the visual hooks: $4T, 40+, ~80%) */
+  --fs-metric-xl:  6rem;     /* 96px */
+  --fs-metric-l:   4.5rem;   /* 72px */
+
+  /* Display scale (headlines) */
+  --fs-display-xl: 4rem;     /* 64px — hero "We are Symphony" (600/700) */
+  --fs-display-l:  3rem;     /* 48px — section headers */
+  --fs-display-m:  2.25rem;  /* 36px */
+  --fs-display-s:  1.75rem;  /* 28px — grid headers */
+
+  /* Text scale */
+  --fs-title:      1.5rem;   /* 24px — card titles */
+  --fs-lead:       1.375rem; /* 22px — hero subcopy (400) */
+  --fs-body-lg:    1.125rem; /* 18px */
+  --fs-body:       1rem;     /* 16px */
+  --fs-body-sm:    0.875rem; /* 14px — micro-headers */
+  --fs-eyebrow:    0.75rem;  /* 12px — ALL CAPS eyebrow labels */
+  --fs-caption:    0.75rem;  /* 12px — pills / labels */
+
+  /* Line heights */
+  --lh-tight:   1.02;   /* display */
+  --lh-snug:    1.15;
+  --lh-normal:  1.45;   /* body */
+  --lh-relaxed: 1.6;
+
+  /* Letter spacing */
+  --ls-display: -0.02em;  /* headlines & metric callouts */
+  --ls-tight:   -0.01em;
+  --ls-normal:  0;
+  --ls-wide:    0.04em;
+  --ls-eyebrow: 0.1em;    /* ALL CAPS eyebrow labels (0.08–0.12em) */
+  --ls-wider:   0.12em;
+}
