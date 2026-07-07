@@ -1,0 +1,475 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>Case -deck (draft)</title>
+<link rel="stylesheet" href="../Symphony Design System/styles.css" />
+<style>
+  body { margin: 0; }
+  .deck {
+    display: grid;
+    gap: 24px;
+    padding: 40px clamp(20px, 5vw, 80px);
+    max-width: 1280px;
+    margin: 0 auto;
+  }
+  .slide {
+    min-height: auto;
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 24px;
+    padding: 48px;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    background: rgba(255,255,255,0.02);
+  }
+  .slide-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+    padding-bottom: 16px;
+    margin-bottom: 28px;
+  }
+  .eyebrow {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.10em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.55);
+  }
+  .slide-head .eyebrow:first-child {
+    color: rgba(255,255,255,0.95);
+  }
+  .slide h2 {
+    font-size: 32px;
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+    font-weight: 600;
+    margin: 0;
+  }
+  .slide h2 em {
+    color: #6D5DF6;
+    font-style: normal;
+  }
+
+  /* narrative block */
+  .narrative {
+    border-left: 2px solid #6D5DF6;
+    padding: 20px 24px;
+    margin-bottom: 32px;
+    background: rgba(109,93,246,0.04);
+    border-radius: 0 12px 12px 0;
+  }
+  .narrative p {
+    font-size: 15px;
+    line-height: 1.7;
+    color: rgba(255,255,255,0.85);
+    margin: 0;
+  }
+  .narrative strong {
+    color: #fff;
+  }
+
+  /* section blocks */
+  .section {
+    margin-bottom: 28px;
+  }
+  .section-label {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.10em;
+    text-transform: uppercase;
+    color: #6D5DF6;
+    margin: 0 0 14px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid rgba(109,93,246,0.15);
+  }
+
+  /* two-col for best of both */
+  .two-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+  }
+  .two-col .side h4 {
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.6);
+    margin: 0 0 8px;
+    font-weight: 600;
+  }
+  .two-col .side p {
+    font-size: 14px;
+    line-height: 1.6;
+    color: rgba(255,255,255,0.82);
+    margin: 0;
+  }
+  .two-col .side + .side {
+    border-left: 1px solid rgba(255,255,255,0.06);
+    padding-left: 32px;
+  }
+
+  /* bullet list */
+  .section ul {
+    margin: 0;
+    padding-left: 18px;
+  }
+  .section li {
+    font-size: 14px;
+    line-height: 1.7;
+    color: rgba(255,255,255,0.82);
+    margin-bottom: 4px;
+  }
+  .section .list-lead {
+    font-size: 13px;
+    color: rgba(255,255,255,0.6);
+    margin: 0 0 10px;
+  }
+
+  /* key messages */
+  .messages li {
+    list-style: none;
+    position: relative;
+    padding-left: 16px;
+    margin-bottom: 6px;
+  }
+  .messages li::before {
+    content: "·";
+    position: absolute;
+    left: 0;
+    color: #6D5DF6;
+    font-weight: 700;
+  }
+  .messages ul { padding-left: 0; }
+  .messages .internal-note {
+    font-size: 12px;
+    color: rgba(255,255,255,0.45);
+    font-style: italic;
+    margin-top: 4px;
+    padding-left: 16px;
+  }
+
+  /* bottom statement */
+  .bottom-statement {
+    margin-top: auto;
+    padding-top: 16px;
+    border-top: 1px solid rgba(255,255,255,0.06);
+  }
+  .bottom-statement p {
+    font-size: 12px;
+    line-height: 1.6;
+    color: rgba(255,255,255,0.45);
+    margin: 0;
+  }
+
+  /* old cols (slides 2-4) */
+  .cols {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px;
+  }
+  .col h3 {
+    font-size: 12px;
+    letter-spacing: 0.10em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.7);
+    margin: 0 0 12px;
+    font-weight: 600;
+  }
+  .col p, .col li {
+    font-size: 14px;
+    line-height: 1.6;
+    color: rgba(255,255,255,0.82);
+  }
+  .col ul { margin: 0; padding-left: 18px; }
+  .col + .col { border-left: 1px solid rgba(255,255,255,0.06); padding-left: 32px; }
+  .footnote {
+    font-size: 12px;
+    color: rgba(255,255,255,0.5);
+    border-top: 1px solid rgba(255,255,255,0.08);
+    padding-top: 12px;
+    margin-top: auto;
+  }
+  .empty {
+    display: grid;
+    place-items: center;
+    color: rgba(255,255,255,0.35);
+    font-size: 13px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    flex: 1;
+  }
+</style>
+</head>
+<body>
+  <div class="deck">
+
+    <!-- SLIDE 1 -->
+    <section class="slide" id="s1">
+      <div class="slide-head">
+        <span class="eyebrow">Overall narrative and voice and tone</span>
+        <span class="eyebrow">Ironvale · Internal</span>
+      </div>
+
+      <div class="narrative">
+        <p>Symphony encourages Ironvale in preserving their traditional industry footprint and credibility built through decades. We are not selling code, we are selling a repeatable system which enables Ironvale to continually unlock capacity and compounding cost advantage while enabling their people to focus on high-value tasks.</p>
+      </div>
+
+      <div class="section">
+        <div class="section-label">Best of both worlds</div>
+        <div class="two-col">
+          <div class="side">
+            <h4>Their moat</h4>
+            <p>Discipline, financial strength, brand, partnerships, experts and data.</p>
+          </div>
+          <div class="side">
+            <h4>Our catalyst</h4>
+            <p>We take what Ironvale has successfully built and accelerate the intelligence layer around its experts, to provide frictionless AI experiences for their modern customers.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="section">
+        <div class="section-label">Simplicity &amp; clarity</div>
+        <div class="two-col">
+          <div class="side">
+            <h4>Our RFP reply needs to communicate</h4>
+            <ul>
+              <li>Where have we solved this problem before? With which results?</li>
+              <li>When is the first time, when they get what they paid for ?</li>
+              <li>What do they get in near -mid -long term?</li>
+              <li>What do we need from them &amp; when?</li>
+              <li>What are critical constraints and our mitigation plans?</li>
+            </ul>
+          </div>
+          <div class="side">
+            <h4>Our voice &amp; tone</h4>
+            <ul>
+              <li>Bilingual: we speak both insurance and AI</li>
+              <li>Short clear narratives -not flashy presentations</li>
+              <li>Grounded, confident: we take positions, communicate constraints and jointly negotiate trade-offs.</li>
+              <li>We build AI around experts - by automating the intelligence work so Ironvale's adjusters can focus on the judgment calls that actually require experience. The system learns from those judgment calls and gets sharper with every claim.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="section messages">
+        <div class="section-label">Executive presence -key messages</div>
+        <ul>
+          <li>The gap is widening (2-3x behind leading benchmarks) -but there is no reason to panic.</li>
+          <li>We bring them optionality, ownership of what matters, modularity, control, and partnership in decision-making.</li>
+          <li>We base a relationship on trust, joint decision-making and risk-mitigation.</li>
+          <li>Low-ego, high-conviction -we work with them as they are now; we don't wait for perfect conditions to provide value.</li>
+          <li>We (Symphony) invest in enduring partnerships and compounding impact.</li>
+        </ul>
+        <div class="internal-note">Internal note: How we do anything is how we do everything.</div>
+      </div>
+
+      <div class="bottom-statement">
+        <p>The market has already validated insurtech, estimates automation and digital-first claimant experiences. My job is to use the "Proven, Better, New" framework and capture biggest ROI in shortest amount of time for Ironvale.</p>
+      </div>
+    </section>
+
+    <!-- SLIDE 2 -CP -->
+    <section class="slide" id="s2">
+      <div class="slide-head">
+        <span class="eyebrow">Internal alignments &amp; constraints -CP</span>
+        <span class="eyebrow">Ironvale · Internal</span>
+      </div>
+
+      <div class="narrative">
+        <p><strong>Constraints are our critical decision.</strong> What and how we communicate, sets the course for the solution's Product-Market-Fit and experience our delivery team has when crafting the solution.</p>
+      </div>
+
+      <div class="section">
+        <div class="section-label">Longterm potential validation</div>
+        <p class="list-lead">To our (Symphony's) CRO, we need to justify our pre-sales investment into this pursuit. Basically, answer the question: why would Ironvale stick around after year 2? As code and execution get commoditised, and our clients become our competitors it comes down to:</p>
+        <ul>
+          <li>From our industry experience, we walk in knowing which routing architectures, estimate automation approaches, integration patterns have proven themselves in production and with regulators. This is something which would take months for Ironvale to discover organically.</li>
+          <li>Speed -only a vetted AI SDLC native program can move towards achieving set production-grade results in noted timelines.</li>
+          <li>Dynamic system thinking: we are building a long term technical system, not a one-off PoC. While Ironvale owns the artifacts, we design and operate the connective tissue which is constantly evolving at scale, becoming smarter and marginally cheaper to run with every iteration.</li>
+          <li>They need an expert, informed with the system, to continually track usability and make sure shipping slices doesn't leave our product with an overall inconsistent experience and create issues downstream.</li>
+          <li>Security, compliance and auditability are embedded from day one -every AI decision is traceable, every data flow respects PII boundaries, and every deployment meets the regulatory bar before it touches production.</li>
+        </ul>
+      </div>
+
+      <div class="section">
+        <div class="section-label">The connection between constraints &amp; commitments</div>
+        <p style="font-size:14px; line-height:1.7; color:rgba(255,255,255,0.82); margin:0;">We need to measure success and have a northstar KPI for each slice, but how we communicate and tie these KPIs to our monetization needs to be transparent and in reality with the current state of Ironvale's critical constraints and their mitigation plan (state of db, APIs, adoption, current workflows). <strong>This service has conditions which need to be filled in order to execute successfully and we need to have these conversations upfront.</strong></p>
+      </div>
+
+      <div class="section">
+        <div class="section-label">Core offering &amp; resources</div>
+        <ul>
+          <li>The FDE (AI SDLC) engagement to be used as spearhead to enable longterm Delivery.</li>
+          <li>We use FDE when we have high ambiguity, high stakes, tight timeline with AI as main component.</li>
+          <li>It is a gated approach -we unlock the next delivery phase by hitting agreed KPIs in Phase 1. This gives the client clarity and a sense of control they lacked in previous engagements.</li>
+          <li>We need to gain trust with a traditional client and aren't afraid to start small (1 FDE, 1 Data engineer + fractional Architect).</li>
+          <li>In terms of planning: We know a traditional client has budget cycles and need to plan long term. We can provide a fixed bid for first few slices and long-term guesstimates, based on expected team size from our similar previous experiences and results from slice 1, but we commit (as a team) only to near term timelines and KPIs.</li>
+        </ul>
+      </div>
+
+      <div class="section">
+        <div class="section-label">Opportunity &amp; ROI</div>
+        <p style="font-size:14px; line-height:1.7; color:rgba(255,255,255,0.82); margin:0;">I would deliver an ROI analysis and POV framing to CP, which speaks about how Ironvale would pay us from OPEX savings and anything which goes on top would be framed as surplus value which they receive. Making this a truly irresistible offering. I would also continually provide context for upsell expansion as the project evolves. This includes organic data monetization opportunities, delivery support with finishing claims migration and APIs etc.</p>
+      </div>
+    </section>
+
+    <!-- SLIDE 3 -Architect -->
+    <section class="slide" id="s3">
+      <div class="slide-head">
+        <span class="eyebrow">Internal alignments &amp; constraints -Architect</span>
+        <span class="eyebrow">Ironvale · Internal</span>
+      </div>
+
+      <div class="narrative">
+        <p><strong>Build vs buy alignment.</strong> This is a joint decision based on available information. I would give my POV (below), but would leave space that based on RFP discussions alone, we don't have enough data for a quality decision and need additional meetings/service to reliably make one.</p>
+      </div>
+
+      <div class="section">
+        <div class="section-label">Build vs buy -a layered approach</div>
+        <p class="list-lead">In the AI space, building and owning lives in the space of loops and layers. We propose owning what compounds and renting what commoditizes:</p>
+        <div class="two-col" style="margin-top:24px;">
+          <div class="side">
+            <h4>Own -Ironvale's proprietary claims data</h4>
+            <p>Nearly a century of loss experience, closed files, and adjuster decisions across 750K policies and 14 states. We use this data to power evals, build guardrails, calibrate routing etc.</p>
+          </div>
+          <div class="side">
+            <h4>Build together, Ironvale owns -orchestration layer</h4>
+            <p>Orchestration, routing logic, coverage heuristics, eval harness, decision logs. This is the place where Ironvale's adjuster/claims judgment gets encoded. This layer makes every other layer (model, vendor, orchestration pattern) swappable and is something we build together and Ironvale owns.</p>
+          </div>
+        </div>
+        <div class="two-col" style="margin-top:20px;">
+          <div class="side">
+            <h4>Rent -foundation models</h4>
+            <p>Rented with model portability engineered in from day one, verified continuously by the eval harness so any provider can be swapped in days thus avoiding lock-in.</p>
+          </div>
+          <div class="side">
+            <h4>Decouple -core claims platform</h4>
+            <p>We decouple during MVP and have read-only access through an adapter layer or read replica to avoid being blocked by migration timeline. When finished this layer gets swapped with APIs. This approach comes with a caveat that we don't write anything in the claims db for MVP. The MVP would craft recommendation and the adjuster would execute. Our voice and tone here is pragmatic, disciplined and transparent focusing on enabling clean de-coupling and then swapping.</p>
+          </div>
+        </div>
+        <div class="internal-note" style="margin-top:20px; padding-left:0;">Narrative for CTO: <strong style="color:rgba(255,255,255,0.85);">"You own what compounds. You rent what commoditizes."</strong> Our job is to help you accelerate your static dataset into a compounding asset -through an orchestration layer on top, so that everything below stays swappable.</div>
+      </div>
+
+      <div class="section">
+        <div class="section-label">The preconditions &amp; critical dependencies</div>
+        <div class="two-col">
+          <div class="side">
+            <h4>Technical</h4>
+            <ul>
+              <li>Agreement on data access, residency, and PII boundaries.</li>
+              <li>Ironvale to deliver a golden set of ~200–500 historical claims.</li>
+              <li>Agreement on foundational model and its hosting (Databricks?).</li>
+              <li>Our observability and audit trail strategy -aligned with industry compliance.</li>
+              <li>Our suggested kill-switch strategy per slice.</li>
+              <li>Backup plan for missing SME - the forward-deployed engineer shadows desk adjusters for the first two weeks, encoding their triage logic, coverage heuristics, and edge cases directly into evals and prompts. Of course this backup plan is communicated upfront and we are to propose a correction of terms and expected OKRs.</li>
+              <li>Backup plan for claims platform migration (already mentioned)</li>
+            </ul>
+          </div>
+          <div class="side">
+            <h4>Product</h4>
+            <ul>
+              <li>In order to assess feasibility and our commitment to achieving KPIs set in the RFP within the given timeline, we need a baseline of the current state of those metrics. Ironvale ideally produces current: cycle time by peril, cost per claim by segment, adjuster hours per claim, claims frequency and seasonality per type. If these are not currently available we can work with Ironvale to obtain them and/or set realistic KPIs against which our impact is measured (% improvement, ranges etc). We will commit to a hard number as CFO requested and jointly agree what this number is and provide the logic behind it.</li>
+              <li>As part of our promise to "build AI around experts," my role as Product Strategist is to provide CP and Architect with a <a href="https://app.notion.com/p/dusankolenovic/Unlock-Underwriting-Assistant-351bcb328fd78019aa3af876162c792b?source=copy_link" target="_blank" style="color:#6D5DF6;">baseline</a> of current user flows, mental models, critical adoption frictions and natural early adopters.</li>
+              <li>I would also provide other critical KPIs for tracking in order to make sure we avoid optimising for a few at the cost of others.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="section">
+        <div class="section-label">System design / audit</div>
+        <p class="list-lead">The outcome of internal alignments is a set of directions and pre-conditions with formal assessment criteria of Ironvale's current state -measured against set expectations and deadlines.</p>
+        <p style="font-size:14px; line-height:1.7; color:rgba(255,255,255,0.82); margin:0 0 10px;">Based on existing information, CP, Architect and myself can produce a solid RFP response and would jointly decide how we fill out missing information. Depending on the extent of this missing information, I see us:</p>
+        <ul>
+          <li>Organising additional calls with Ironvale.</li>
+          <li>Extending our proposal timeline with an audit phase (week 0).</li>
+          <li>Selling a small System Design phase service whose deliverables are an asset for Ironvale.</li>
+          <li>Take an informed calculated risk</li>
+        </ul>
+        <div class="internal-note" style="margin-top:14px; padding-left:0;">Each direction we take is communicated and synchronised with CP. My goal is to narrow the scope, drive towards value, and not wait for perfect conditions.</div>
+      </div>
+    </section>
+
+    <!-- SLIDE 4 -Answers and directions -->
+    <section class="slide" id="s4">
+      <div class="slide-head">
+        <span class="eyebrow">Internal alignments &amp; constraints - Architect</span>
+        <span class="eyebrow">Ironvale · Internal</span>
+      </div>
+
+      <div class="section">
+        <div class="two-col">
+          <div class="side">
+            <div class="section-label">Align with Architect on best practices for</div>
+            <ul>
+              <li>Slices-as-phases and how each enables the following one</li>
+              <li>A/B testing infra (experimentation, feature flags)</li>
+              <li>Observability &amp; product analytics setup</li>
+              <li>Tooling (adoption, evals, tracing, automation, prompt management, RAG, datalabeling etc)</li>
+              <li>Cost &amp; unit economics tracking</li>
+              <li>Human-in-loop: security &amp; regulatory context</li>
+            </ul>
+            <div class="section-label" style="margin-top:24px;">MVP definition</div>
+            <p style="font-size:14px; line-height:1.7; color:rgba(255,255,255,0.82); margin:0 0 12px;">An undefined MVP is an opportunity to set a realistic course.</p>
+            <p style="font-size:14px; line-height:1.7; color:rgba(255,255,255,0.82); margin:0 0 12px;">Based on available data, and current system state we would jointly define first three slices. <strong>MVP = a thin lifecycle slice — one peril, one state.</strong> If we decide we don't have enough data to stand behind our decisions we would either make a calculated risk or execute a mitigation step I previously noted. In terms of the rest of value areas to cover, we would use strategic intent = An opinionated statement of the outcome we're steering toward which is more stable than roadmap items and shifting models, slices and features.</p>
+            <p class="list-lead">What I take into consideration when forming an MVP?</p>
+            <ul>
+              <li>Time-to-value (speed of delivery)</li>
+              <li>High impact (solving an actual pain) - low friction entry points in terms of adoption with early adopters</li>
+              <li>Data state and low redtape conditions</li>
+              <li>Ability to clearly track impact</li>
+              <li>Mistakes are recoverable, visible, or cheap (low blast radius)</li>
+            </ul>
+          </div>
+          <div class="side">
+            <div class="section-label">Slice example (once we know baseline)</div>
+            <p style="font-size:14px; line-height:1.7; color:rgba(255,255,255,0.82); margin:0 0 12px;"><strong>Residential water-damage FNOL triage (Ohio, &lt;$10K claims)</strong></p>
+            <p style="font-size:13px; line-height:1.7; color:rgba(255,255,255,0.72); margin:0 0 6px;"><strong style="color:rgba(255,255,255,0.55);">KPI:</strong> Cycle time to first-payment decision - Ohio residential water cohort</p>
+            <p style="font-size:13px; line-height:1.7; color:rgba(255,255,255,0.72); margin:0 0 6px;"><strong style="color:rgba(255,255,255,0.55);">Hypothesis:</strong> AI intake at FNOL (photos + policy + loss description → draft estimate with confidence score) routes ~30% of this cohort to accelerated path, cutting cycle from ~11 days to &lt;2 days</p>
+            <p style="font-size:13px; line-height:1.7; color:rgba(255,255,255,0.72); margin:0 0 6px;"><strong style="color:rgba(255,255,255,0.55);">Build:</strong> Intake agent triggered on residential + Ohio + water + &lt;$10K; drafts assessment + estimate within 15 min; full trace + provenance; adjuster gates every payment; every override feeds golden set</p>
+            <p style="font-size:13px; line-height:1.7; color:rgba(255,255,255,0.72); margin:0 0 6px;"><strong style="color:rgba(255,255,255,0.55);">Promote if:</strong> ≥20/100 route to accelerated, accuracy within ±15% on ≥80%, override rate &lt;15% (after 200 claims, ≥3 adjusters) → expand states, raise cap, add wind/hail</p>
+            <p style="font-size:13px; line-height:1.7; color:rgba(255,255,255,0.72); margin:0 0 6px;"><strong style="color:rgba(255,255,255,0.55);">Iterate if:</strong> 15-30 route, or accuracy 65-80%, or override 15-25% - threshold or cohort needs tuning</p>
+            <p style="font-size:13px; line-height:1.7; color:rgba(255,255,255,0.72); margin:0;"><strong style="color:rgba(255,255,255,0.55);">Sunset if:</strong> &lt;15 route, accuracy &lt;65%, override &gt;25%, or any bad-faith exposure flagged in legal review</p>
+            <div class="section-label" style="margin-top:24px;">What success looks like after 90 days?</div>
+            <ul style="font-size:13px; line-height:1.7; color:rgba(255,255,255,0.72); margin:0; padding-left:18px;">
+              <li style="margin-bottom:6px;">3 slices deployed each moving jointly agreed KPI (cycle time, cost) and stable adoption growth among users</li>
+              <li style="margin-bottom:6px;">each slice proved its ROI (in terms of OPEX savings vs inference cost) and is covered by our analytics</li>
+              <li style="margin-bottom:6px;">slices are developed without claims migration dependency and have observability &amp; tracing from day 1</li>
+              <li style="margin-bottom:6px;">our golden eval set is operational and growing from HITL</li>
+              <li style="margin-bottom:6px;">trust and relationships built over joint decisions made and new opportunities arise</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="section">
+        <div class="section-label">Stakeholder alignment</div>
+        <p style="font-size:14px; line-height:1.7; color:rgba(255,255,255,0.82); margin:0 0 16px;">Each stakeholder has their motivations. This situation is normal, as these are usually strong characters. If no time: I would align with CEO (and let them handle CFO and CTO) as their North star direction (not set in stone KPIs) includes CFO's and we've mitigated lock-in concerns with CTO via layered ownership and build strategy.</p>
+        <p style="font-size:14px; line-height:1.7; color:rgba(255,255,255,0.82); margin:0 0 10px;">If there is time, I'd be pragmatic and do one of the following:</p>
+        <ol style="margin:0; padding-left:18px;">
+          <li style="font-size:14px; line-height:1.7; color:rgba(255,255,255,0.82); margin-bottom:4px;">Execute a simple positioning grid exercise (1h), using constraints to unify our stakeholders</li>
+          <li style="font-size:14px; line-height:1.7; color:rgba(255,255,255,0.82); margin-bottom:4px;">Identify non-competing priorities and stick to them</li>
+          <li style="font-size:14px; line-height:1.7; color:rgba(255,255,255,0.82); margin-bottom:4px;">Take everything I know about the pursuit, market and client, pair it with our experience in the field and build a new narrative which doesn't belong to anyone and around which they can unite via giving feedback</li>
+          <li style="font-size:14px; line-height:1.7; color:rgba(255,255,255,0.82); margin-bottom:4px;">Extend our speaker pool with Ironvale's mid management as top level doesn't lack vision but sometimes lacks critical information from the field</li>
+        </ol>
+        <p class="list-lead" style="margin-top:16px;">There are around 8 things to push back on. The single most important one in my experience is to focus on adoption and base target KPIs in actual field reality while starting small with a clear vision. We push back with outlined voice and tone. Collaborative, professional and flexible. Giving client options and being transparent about trade-offs, we use these conversations to prove credibility and our commitment to the best outcome.</p>
+        <p class="list-lead">Aside from this, we also guide the client towards:</p>
+        <ul style="margin:0; padding-left:18px;">
+          <li style="font-size:13px; line-height:1.7; color:rgba(255,255,255,0.6); margin-bottom:4px;">Focusing outside of singled-out KPIs onto lateral KPIs and actual user adoption</li>
+          <li style="font-size:13px; line-height:1.7; color:rgba(255,255,255,0.6); margin-bottom:4px;">Having an optimal mix of building and owning layers based on the space we're moving into.</li>
+          <li style="font-size:13px; line-height:1.7; color:rgba(255,255,255,0.6); margin-bottom:4px;">Exploring the path of de-coupling from their migration work and not waiting for APIs to be finished.</li>
+          <li style="font-size:13px; line-height:1.7; color:rgba(255,255,255,0.6); margin-bottom:4px;">Not waiting for SME but replicate this person to our best attempt and adjust expectations accordingly.</li>
+          <li style="font-size:13px; line-height:1.7; color:rgba(255,255,255,0.6); margin-bottom:0;">Introducing "rent with swap option" as an alternative to a CTO who wants to build.</li>
+        </ul>
+        <p style="font-size:14px; line-height:1.7; color:rgba(255,255,255,0.82); margin:0;
+      </div>
+    </section>
+
+  </div>
+</body>
+</html>
